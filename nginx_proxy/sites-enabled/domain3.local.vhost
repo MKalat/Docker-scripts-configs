@@ -1,0 +1,10 @@
+server {
+  server_name domain3.local;
+
+ 
+  location / {
+    proxy_pass http://domain3:80;    
+  }
+
+  
+}

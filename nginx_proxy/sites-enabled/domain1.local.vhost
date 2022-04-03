@@ -1,0 +1,17 @@
+server {
+  server_name domain1.local;
+
+  root /var/www;
+
+  index index.php index.html;
+
+   location / {
+	try_files $uri $uri/ /index.php;
+   }
+   location  ~ \.php$ {
+     include fastcgi_params;
+     fastcgi_param SCRIPT_FILENAME /var/www$fastcgi_script_name; # /var/www is directry inside php-fpm docker container where cms/script/webpage/application is
+     fastcgi_pass domain1:9000;
+     fastcgi_index index.php;
+   }
+}

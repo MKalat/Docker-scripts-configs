@@ -1,0 +1,8 @@
+server {
+  server_name phpmyadmin.local;
+
+  location / {
+    proxy_pass http://docker_phpmyadmin:80;    
+  }
+  
+}

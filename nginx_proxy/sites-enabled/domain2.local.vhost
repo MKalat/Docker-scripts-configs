@@ -1,0 +1,17 @@
+server {
+  server_name domain2.local;
+
+  root /var/www/public;
+
+  index index.php index.html;
+
+   location / {
+	try_files $uri $uri/ /index.php;
+   }
+   location  ~ \.php$ {
+     include fastcgi_params;
+     fastcgi_param SCRIPT_FILENAME /var/www/public$fastcgi_script_name;
+     fastcgi_pass domain2:9000;
+     fastcgi_index index.php;
+   }
+}
